@@ -1,0 +1,40 @@
+# Core HTTP and web interaction
+requests==2.31.0
+aiohttp==3.9.1
+playwright==1.40.0
+selenium==4.15.2
+
+# HTML parsing and data extraction
+beautifulsoup4==4.12.2
+lxml==4.9.3
+parsel==1.8.1
+
+# Data processing and validation
+pydantic==2.5.2
+jsonschema==4.20.0
+python-dateutil==2.8.2
+
+# AI/ML for enhanced extraction
+spacy==3.7.2
+transformers==4.35.2
+pillow==10.1.0  # For image processing
+pytesseract==0.3.10  # OCR capabilities
+
+# Security and authentication
+cryptography==41.0.5
+keyring==24.2.0  # For secure credential storage
+
+# Utility
+tqdm==4.66.1  # Progress bars
+python-dotenv==1.0.0  # Environment variables
+tenacity==8.2.3  # Retry logic
+schedule==1.2.1  # Scheduling
+
+# Optional: Database integration
+pymongo==4.6.0
+redis==5.0.1
+
+# Development and testing
+pytest==7.4.3
+black==23.11.0
+flake8==6.1.0 

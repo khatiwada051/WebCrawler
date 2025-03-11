@@ -1,0 +1,59 @@
+{
+  "site_id": "example-store",
+  "base_url": "https://www.example-store.com",
+  "login_required": true,
+  
+  "authentication": {
+    "login_url": "/login",
+    "credentials_key": "example-store-creds",
+    "form_selectors": {
+      "username": "#email",
+      "password": "#password",
+      "submit": ".login-button",
+      "action": "/auth/login"
+    }
+  },
+  
+  "product_list": {
+    "url_patterns": [
+      "/category/electronics",
+      "/category/fashion",
+      "/category/home"
+    ],
+    "pagination": {
+      "type": "load_more",
+      "selector": ".load-more-button",
+      "max_pages": 5
+    },
+    "product_selector": ".product-item",
+    "data_selectors": {
+      "name": ".product-name",
+      "price": ".product-price",
+      "image": ".product-image img",
+      "link": ".product-link"
+    }
+  },
+  
+  "product_detail": {
+    "data_selectors": {
+      "name": ".product-title",
+      "price": ".product-price",
+      "description": ".product-description",
+      "images": ".product-gallery img",
+      "sku": ".product-sku",
+      "specifications": {
+        "container": ".specifications",
+        "row": ".spec-row",
+        "key": ".spec-name",
+        "value": ".spec-value"
+      }
+    }
+  },
+  
+  "use_browser": true,
+  "wait_for_selectors": [
+    ".product-container",
+    ".product-gallery"
+  ],
+  "extract_metadata": true
+} 

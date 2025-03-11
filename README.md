@@ -1,87 +1,114 @@
-# WebCrawler
+# AI-Powered Web Scraping Agent
 
-A powerful and flexible web crawler implementation for extracting and analyzing web content.
+This project implements an intelligent web scraping agent capable of navigating websites, logging in when necessary, and extracting structured product data into JSON format.
 
 ## Features
 
-- Fast and efficient web crawling
-- Configurable crawling depth and breadth
-- URL filtering and pattern matching
-- Rate limiting to respect website policies
-- Data extraction and storage capabilities
-- Support for robots.txt compliance
-- Concurrent crawling with multiple threads
-
-## Requirements
-
-- Python 3.8+
-- Required packages (will be listed in requirements.txt):
-  - requests
-  - beautifulsoup4
-  - urllib3
-  - aiohttp
-  - lxml
+- Modular, extensible architecture for web scraping
+- Authentication support for accessing login-protected content
+- AI-enhanced extraction for better data accuracy
+- Configurable site-specific adapters
+- Robust error handling and resilience
+- Structured JSON output with schema validation
 
 ## Installation
 
+### Prerequisites
+
+- Python 3.9 or higher
+- For browser automation: Chrome or Firefox browser
+- For OCR capabilities: Tesseract OCR engine
+
+### Setup
+
 1. Clone the repository:
 ```bash
-git clone https://github.com/khatiwada051/WebCrawler.git
-cd WebCrawler
+git clone https://github.com/yourusername/web-scraper-ai.git
+cd web-scraper-ai
 ```
 
-2. Create a virtual environment (recommended):
+2. Create and activate a virtual environment:
 ```bash
+# On Windows
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate
+
+# On macOS/Linux
+python -m venv venv
+source venv/bin/activate
 ```
 
 3. Install dependencies:
 ```bash
+pip install --no-deps -e .
 pip install -r requirements.txt
 ```
 
-## Usage
+4. Install browser drivers for Playwright:
+```bash
+playwright install --force
+```
 
-Basic usage example:
-
-```python
-from webcrawler import WebCrawler
-
-crawler = WebCrawler(
-    start_url="https://example.com",
-    max_depth=2,
-    max_pages=100
-)
-
-crawler.start()
+5. For NLP features, download the spaCy language model:
+```bash
+python -m spacy download en_core_web_sm
 ```
 
 ## Configuration
 
-The crawler can be configured with the following parameters:
+1. Copy the example configuration file:
+```bash
+cp config/config.example.json config/config.json
+```
 
-- `start_url`: The initial URL to start crawling from
-- `max_depth`: Maximum depth of pages to crawl (default: 3)
-- `max_pages`: Maximum number of pages to crawl (default: 1000)
-- `delay`: Delay between requests in seconds (default: 1)
-- `user_agent`: Custom user agent string
-- `respect_robots`: Whether to respect robots.txt (default: True)
+2. Edit `config/config.json` to customize the global settings.
 
-## Contributing
+3. Create site-specific configurations in the `config/sites/` directory.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Usage
+
+### Basic Usage
+
+```bash
+python -m scraper run --site example-store --output-dir ./data
+```
+
+### Login-required Sites
+
+1. Set up secure credentials:
+```bash
+python -m scraper auth setup --site example-store
+```
+
+2. Run the scraper:
+```bash
+python -m scraper run --site example-store --with-login
+```
+
+### Advanced Usage
+
+```bash
+# Extract specific categories
+python -m scraper run --site example-store --categories electronics,books
+
+# Run with a specific proxy
+python -m scraper run --site example-store --proxy http://user:pass@proxy.example.com:8080
+
+# Schedule recurring jobs
+python -m scraper schedule --site example-store --interval 12h
+```
+
+## Examples
+
+The `examples/` directory contains complete examples for common websites:
+- `examples/public_store/`: Simple example for a public e-commerce site
+- `examples/auth_store/`: Example with login requirement
+- `examples/dynamic_site/`: Example for JavaScript-heavy site
+
+## Legal Considerations
+
+Always ensure you have permission to scrape websites and comply with their Terms of Service. This tool should be used responsibly and ethically.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Your Name - [@khatiwada051](https://github.com/khatiwada051)
-
-Project Link: [https://github.com/khatiwada051/WebCrawler](https://github.com/khatiwada051/WebCrawler)
+MIT License - See LICENSE file for details

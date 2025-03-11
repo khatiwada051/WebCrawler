@@ -1,0 +1,39 @@
+{
+  "concurrency": 3,
+  "request_delay": 2.0,
+  "log_level": "INFO",
+  "log_file": "logs/scraper.log",
+  "user_agent_rotation": true,
+  "secure_storage": true,
+  
+  "proxy_settings": {
+    "enabled": false,
+    "server": "http://proxy.example.com:8080",
+    "username": "",
+    "password": "",
+    "proxy_rotation": false,
+    "proxy_list": []
+  },
+  
+  "storage": {
+    "output_dir": "./data",
+    "file_format": "json",
+    "compress": false,
+    "append_mode": false,
+    "max_items_per_file": 1000
+  },
+  
+  "extraction": {
+    "use_ai": true,
+    "confidence_threshold": 0.6,
+    "use_spacy": true,
+    "use_transformers": false
+  },
+  
+  "browser_automation": {
+    "enabled": false,
+    "headless": true,
+    "browser_type": "chromium",
+    "default_timeout": 30000
+  }
+} 
